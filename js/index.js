@@ -67,6 +67,8 @@ let middleImage = mainContent.querySelector('#middle-img');
 
 middleImage.src = siteContent['main-content']['middle-img-src'];
 
+// We could also use the below method to do the same thing...
+// But this is sort of simplier since we don't have to worry about the middle-img-src
 let i = 0;
 let mainContentH = ['features', 'about', 'services', 'product', 'vision']
 textContent.forEach(item => {
@@ -77,4 +79,14 @@ textContent.forEach(item => {
   p.innerHTML = siteContent['main-content'][mainContentH[i] + '-content'];
   i++;
 });
+
+// contact
+let contact = document.querySelector('.contact');
+
+for(let i = 0; i < contact.children.length; i++) {
+  contact.children[i].innerHTML = Object.values(siteContent.contact)[i];
+  console.log(contact.children[i]);
+}
+
+
 
