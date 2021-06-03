@@ -39,4 +39,73 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+// Nav bar
+let nav_items = siteContent.nav;
+let nav       = document.querySelectorAll('header > nav > a');
+
+for(let i = 0; i < nav.length; i++) {
+  console.log(nav_items[i]);
+  nav[i].innerHTML = nav_items['nav-item-' + (i + 1).toString()];
+  nav[i].style.color = 'green';
+}
+
+// We could have done this completely differently
+// A more preferrable way, would be to add them into the siteContent object
+// and add them 'dynamically,' rather than hard-coded like this.
+let firstElement  = document.createElement('a');
+let secondElement = document.createElement('a');
+
+let textOne = document.createTextNode('Great');
+let textTwo = document.createTextNode('Idea');
+
+firstElement.appendChild(textOne);
+firstElement.style.color  = 'Green';
+secondElement.appendChild(textTwo);
+secondElement.style.color = 'Green';
+
+document.querySelector('header > nav').prepend(firstElement);
+document.querySelector('header > nav').appendChild(secondElement);
+
+// cta
+let cta       = document.querySelector('.cta-text');
+let ctaH1     = cta.querySelector('h1');
+let ctaButton = cta.querySelector('button');
+let ctaImage  = document.querySelector('.cta > #cta-img');
+
+ctaH1.innerHTML     = siteContent.cta.h1;
+ctaButton.innerHTML = siteContent.cta.button;
+ctaImage.src        = siteContent.cta["img-src"];
+
+// main-content
+let mainContent = document.querySelector('.main-content');
+let textContent = mainContent.querySelectorAll('.text-content');
+let middleImage = mainContent.querySelector('#middle-img');
+
+middleImage.src = siteContent['main-content']['middle-img-src'];
+
+// We could also use the below method (One we used for contact) to do the same thing...
+// But this is sort of easier since we don't have to worry about the middle-img-src
+let i = 0;
+let mainContentH = ['features', 'about', 'services', 'product', 'vision']
+textContent.forEach(item => {
+  let h = item.children[0];
+  let p = item.children[1];
+
+  h.innerHTML = siteContent['main-content'][mainContentH[i] + '-h4'];
+  p.innerHTML = siteContent['main-content'][mainContentH[i] + '-content'];
+  i++;
+});
+
+// contact
+let contact = document.querySelector('.contact');
+
+for(let i = 0; i < contact.children.length; i++) {
+  contact.children[i].innerHTML = Object.values(siteContent.contact)[i];
+  console.log(contact.children[i]);
+}
+
+// footer
+let footer = document.querySelector('footer');
+footer.innerHTML = siteContent.footer.copyright;
