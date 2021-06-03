@@ -48,7 +48,25 @@ let nav       = document.querySelectorAll('header > nav > a');
 for(let i = 0; i < nav.length; i++) {
   console.log(nav_items[i]);
   nav[i].innerHTML = nav_items['nav-item-' + (i + 1).toString()];
+  nav[i].style.color = 'green';
 }
+
+// We could have done this completely differently
+// A more preferrable way, would be to add them into the siteContent object
+// and add them 'dynamically,' rather than hard-coded like this.
+let firstElement  = document.createElement('a');
+let secondElement = document.createElement('a');
+
+let textOne = document.createTextNode('Great');
+let textTwo = document.createTextNode('Idea');
+
+firstElement.appendChild(textOne);
+firstElement.style.color  = 'Green';
+secondElement.appendChild(textTwo);
+secondElement.style.color = 'Green';
+
+document.querySelector('header > nav').prepend(firstElement);
+document.querySelector('header > nav').appendChild(secondElement);
 
 // cta
 let cta       = document.querySelector('.cta-text');
@@ -67,8 +85,8 @@ let middleImage = mainContent.querySelector('#middle-img');
 
 middleImage.src = siteContent['main-content']['middle-img-src'];
 
-// We could also use the below method to do the same thing...
-// But this is sort of simplier since we don't have to worry about the middle-img-src
+// We could also use the below method (One we used for contact) to do the same thing...
+// But this is sort of easier since we don't have to worry about the middle-img-src
 let i = 0;
 let mainContentH = ['features', 'about', 'services', 'product', 'vision']
 textContent.forEach(item => {
