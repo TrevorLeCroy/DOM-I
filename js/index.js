@@ -39,7 +39,7 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 // Nav bar
 let nav_items = siteContent.nav;
@@ -53,9 +53,28 @@ for(let i = 0; i < nav.length; i++) {
 // cta
 let cta       = document.querySelector('.cta-text');
 let ctaH1     = cta.querySelector('h1');
-let ctaButton = cta.querySelector('button')
+let ctaButton = cta.querySelector('button');
 let ctaImage  = document.querySelector('.cta > #cta-img');
 
 ctaH1.innerHTML     = siteContent.cta.h1;
 ctaButton.innerHTML = siteContent.cta.button;
 ctaImage.src        = siteContent.cta["img-src"];
+
+// main-content
+let mainContent = document.querySelector('.main-content');
+let textContent = mainContent.querySelectorAll('.text-content');
+let middleImage = mainContent.querySelector('#middle-img');
+
+middleImage.src = siteContent['main-content']['middle-img-src'];
+
+let i = 0;
+let mainContentH = ['features', 'about', 'services', 'product', 'vision']
+textContent.forEach(item => {
+  let h = item.children[0];
+  let p = item.children[1];
+
+  h.innerHTML = siteContent['main-content'][mainContentH[i] + '-h4'];
+  p.innerHTML = siteContent['main-content'][mainContentH[i] + '-content'];
+  i++;
+});
+
