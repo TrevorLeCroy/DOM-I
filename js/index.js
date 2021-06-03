@@ -41,7 +41,6 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
-
 // Nav bar
 let nav_items = siteContent.nav;
 let nav       = document.querySelectorAll('header > nav > a');
@@ -51,4 +50,12 @@ for(let i = 0; i < nav.length; i++) {
   nav[i].innerHTML = nav_items['nav-item-' + (i + 1).toString()];
 }
 
+// cta
+let cta       = document.querySelector('.cta-text');
+let ctaH1     = cta.querySelector('h1');
+let ctaButton = cta.querySelector('button')
+let ctaImage  = document.querySelector('.cta > #cta-img');
 
+ctaH1.innerHTML     = siteContent.cta.h1;
+ctaButton.innerHTML = siteContent.cta.button;
+ctaImage.src        = siteContent.cta["img-src"];
