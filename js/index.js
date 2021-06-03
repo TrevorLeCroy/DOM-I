@@ -88,5 +88,6 @@ for(let i = 0; i < contact.children.length; i++) {
   console.log(contact.children[i]);
 }
 
-
-
+// footer
+let footer = document.querySelector('footer');
+footer.innerHTML = siteContent.footer.copyright;
